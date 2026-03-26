@@ -1,0 +1,544 @@
+{
+  "guid": "root________",
+  "title": "",
+  "root": "placesRoot",
+  "typeCode": 2,
+  "children": [
+    {
+      "guid": "toolbar_____",
+      "title": "Bookmarks Toolbar",
+      "root": "toolbarFolder",
+      "typeCode": 2,
+      "children": []
+    },
+    {
+      "guid": "menu________",
+      "title": "Bookmarks Menu",
+      "root": "bookmarksMenuFolder",
+      "typeCode": 2,
+      "children": [
+        {
+          "guid": "f_sec_______",
+          "title": "Cybersecurity & CTI",
+          "typeCode": 2,
+          "children": [
+            {
+              "guid": "f_c2________",
+              "title": "C2 Frameworks",
+              "typeCode": 2,
+              "children": [
+                {
+                  "guid": "bm_havoc____",
+                  "title": "Havoc C2",
+                  "typeCode": 1,
+                  "uri": "https://github.com/HavocFramework/Havoc",
+                  "tags": "c2,redteam,maldev",
+                  "dateAdded": 1705276800000000
+                },
+                {
+                  "guid": "bm_sliver___",
+                  "title": "Sliver C2",
+                  "typeCode": 1,
+                  "uri": "https://github.com/BishopFox/sliver",
+                  "tags": "c2,redteam",
+                  "dateAdded": 1705363200000000
+                },
+                {
+                  "guid": "bm_cobalt___",
+                  "title": "Cobalt Strike Documentation",
+                  "typeCode": 1,
+                  "uri": "https://hstechdocs.helpsystems.com/manuals/cobaltstrike/current/userguide/",
+                  "tags": "c2,redteam,docs",
+                  "dateAdded": 1709856000000000
+                },
+                {
+                  "guid": "bm_brute____",
+                  "title": "Brute Ratel C4",
+                  "typeCode": 1,
+                  "uri": "https://bruteratel.com",
+                  "tags": "c2,redteam",
+                  "dateAdded": 1712534400000000
+                },
+                {
+                  "guid": "bm_nighthwk_",
+                  "title": "Nighthawk",
+                  "typeCode": 1,
+                  "uri": "https://nighthawkc2.io",
+                  "tags": "c2,redteam,commercial",
+                  "dateAdded": 1714348800000000
+                }
+              ]
+            },
+            {
+              "guid": "f_osint_____",
+              "title": "OSINT & Recon",
+              "typeCode": 2,
+              "children": [
+                {
+                  "guid": "bm_shodan___",
+                  "title": "Shodan",
+                  "typeCode": 1,
+                  "uri": "https://www.shodan.io",
+                  "tags": "osint,recon,scanner",
+                  "dateAdded": 1717200000000000
+                },
+                {
+                  "guid": "bm_censys___",
+                  "title": "Censys Search",
+                  "typeCode": 1,
+                  "uri": "https://search.censys.io",
+                  "tags": "osint,recon,scanner",
+                  "dateAdded": 1717286400000000
+                },
+                {
+                  "guid": "bm_fofa_____",
+                  "title": "FOFA",
+                  "typeCode": 1,
+                  "uri": "https://en.fofa.info",
+                  "tags": "osint,recon,scanner",
+                  "dateAdded": 1717372800000000
+                },
+                {
+                  "guid": "bm_spiderft_",
+                  "title": "SpiderFoot HX",
+                  "typeCode": 1,
+                  "uri": "https://www.spiderfoot.net",
+                  "tags": "osint,automation",
+                  "dateAdded": 1720051200000000
+                },
+                {
+                  "guid": "bm_maltego__",
+                  "title": "Maltego",
+                  "typeCode": 1,
+                  "uri": "https://www.maltego.com",
+                  "tags": "osint,graph",
+                  "dateAdded": 1720137600000000
+                },
+                {
+                  "guid": "bm_hunter___",
+                  "title": "Hunter.io",
+                  "typeCode": 1,
+                  "uri": "https://hunter.io",
+                  "tags": "osint,email",
+                  "dateAdded": 1722816000000000
+                },
+                {
+                  "guid": "bm_intelx___",
+                  "title": "IntelX",
+                  "typeCode": 1,
+                  "uri": "https://intelx.io",
+                  "tags": "osint,darkweb,search",
+                  "dateAdded": 1722902400000000
+                }
+              ]
+            },
+            {
+              "guid": "f_exploit___",
+              "title": "Exploitation",
+              "typeCode": 2,
+              "children": [
+                {
+                  "guid": "bm_hacktrick",
+                  "title": "HackTricks",
+                  "typeCode": 1,
+                  "uri": "https://book.hacktricks.xyz",
+                  "tags": "redteam,docs,exploitation",
+                  "dateAdded": 1726358400000000
+                },
+                {
+                  "guid": "bm_gtfobins_",
+                  "title": "GTFOBins",
+                  "typeCode": 1,
+                  "uri": "https://gtfobins.github.io",
+                  "tags": "privesc,lolbas,linux",
+                  "dateAdded": 1726444800000000
+                },
+                {
+                  "guid": "bm_lolbas___",
+                  "title": "LOLBAS Project",
+                  "typeCode": 1,
+                  "uri": "https://lolbas-project.github.io",
+                  "tags": "privesc,lolbas,windows",
+                  "dateAdded": 1726531200000000
+                },
+                {
+                  "guid": "bm_ppmap____",
+                  "title": "PayloadsAllTheThings",
+                  "typeCode": 1,
+                  "uri": "https://github.com/swisskyrepo/PayloadsAllTheThings",
+                  "tags": "payloads,web,exploitation",
+                  "dateAdded": 1728172800000000
+                },
+                {
+                  "guid": "bm_revshell_",
+                  "title": "RevShells",
+                  "typeCode": 1,
+                  "uri": "https://www.revshells.com",
+                  "tags": "reverseshell,exploitation",
+                  "dateAdded": 1728259200000000
+                }
+              ]
+            },
+            {
+              "guid": "f_defensive_",
+              "title": "Defensive",
+              "typeCode": 2,
+              "children": [
+                {
+                  "guid": "bm_mitre____",
+                  "title": "MITRE ATT&CK",
+                  "typeCode": 1,
+                  "uri": "https://attack.mitre.org",
+                  "tags": "ttp,framework,blue",
+                  "dateAdded": 1736467200000000
+                },
+                {
+                  "guid": "bm_sigma____",
+                  "title": "Sigma HQ",
+                  "typeCode": 1,
+                  "uri": "https://github.com/SigmaHQ/sigma",
+                  "tags": "siem,detection,blue",
+                  "dateAdded": 1736553600000000
+                },
+                {
+                  "guid": "bm_yararls__",
+                  "title": "YARA Rules",
+                  "typeCode": 1,
+                  "uri": "https://github.com/Yara-Rules/rules",
+                  "tags": "yara,malware,detection",
+                  "dateAdded": 1736640000000000
+                },
+                {
+                  "guid": "bm_vt_______",
+                  "title": "VirusTotal",
+                  "typeCode": 1,
+                  "uri": "https://www.virustotal.com",
+                  "tags": "malware,analysis,sandbox",
+                  "dateAdded": 1738195200000000
+                },
+                {
+                  "guid": "bm_anyrun___",
+                  "title": "ANY.RUN",
+                  "typeCode": 1,
+                  "uri": "https://app.any.run",
+                  "tags": "sandbox,malware,analysis",
+                  "dateAdded": 1738281600000000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "f_dev_______",
+          "title": "Development",
+          "typeCode": 2,
+          "children": [
+            {
+              "guid": "f_python____",
+              "title": "Python",
+              "typeCode": 2,
+              "children": [
+                {
+                  "guid": "bm_pydocs___",
+                  "title": "Python Docs",
+                  "typeCode": 1,
+                  "uri": "https://docs.python.org/3/",
+                  "tags": "python,docs",
+                  "dateAdded": 1709942400000000
+                },
+                {
+                  "guid": "bm_pypi_____",
+                  "title": "PyPI",
+                  "typeCode": 1,
+                  "uri": "https://pypi.org",
+                  "tags": "python,packages",
+                  "dateAdded": 1710028800000000
+                },
+                {
+                  "guid": "bm_rye______",
+                  "title": "Rye - Python packaging",
+                  "typeCode": 1,
+                  "uri": "https://rye.astral.sh",
+                  "tags": "python,packaging",
+                  "dateAdded": 1712620800000000
+                },
+                {
+                  "guid": "bm_gh_py____",
+                  "title": "GitHub",
+                  "typeCode": 1,
+                  "uri": "https://github.com",
+                  "tags": "git,hosting",
+                  "dateAdded": 1714435200000000
+                }
+              ]
+            },
+            {
+              "guid": "f_go________",
+              "title": "Go",
+              "typeCode": 2,
+              "children": [
+                {
+                  "guid": "bm_godocs___",
+                  "title": "Go Documentation",
+                  "typeCode": 1,
+                  "uri": "https://go.dev/doc/",
+                  "tags": "go,docs",
+                  "dateAdded": 1717459200000000
+                },
+                {
+                  "guid": "bm_gopkg____",
+                  "title": "pkg.go.dev",
+                  "typeCode": 1,
+                  "uri": "https://pkg.go.dev",
+                  "tags": "go,packages",
+                  "dateAdded": 1717545600000000
+                },
+                {
+                  "guid": "bm_goplay___",
+                  "title": "Go Playground",
+                  "typeCode": 1,
+                  "uri": "https://go.dev/play/",
+                  "tags": "go,sandbox",
+                  "dateAdded": 1720224000000000
+                },
+                {
+                  "guid": "bm_godo_____",
+                  "title": "godo - DigitalOcean Go client",
+                  "typeCode": 1,
+                  "uri": "https://github.com/digitalocean/godo",
+                  "tags": "go,digitalocean,api",
+                  "dateAdded": 1750377600000000
+                }
+              ]
+            },
+            {
+              "guid": "f_web_______",
+              "title": "Web",
+              "typeCode": 2,
+              "children": [
+                {
+                  "guid": "bm_mdn______",
+                  "title": "MDN Web Docs",
+                  "typeCode": 1,
+                  "uri": "https://developer.mozilla.org",
+                  "tags": "web,docs,html,css,js",
+                  "dateAdded": 1722988800000000
+                },
+                {
+                  "guid": "bm_caniuse__",
+                  "title": "Can I use",
+                  "typeCode": 1,
+                  "uri": "https://caniuse.com",
+                  "tags": "web,browser,compatibility",
+                  "dateAdded": 1723075200000000
+                },
+                {
+                  "guid": "bm_ghpages__",
+                  "title": "GitHub Pages Docs",
+                  "typeCode": 1,
+                  "uri": "https://docs.github.com/en/pages",
+                  "tags": "github,pages,static",
+                  "dateAdded": 1756684800000000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "f_docs_______",
+          "title": "Documentation & References",
+          "typeCode": 2,
+          "children": [
+            {
+              "guid": "f_cheatsheet",
+              "title": "Cheatsheets",
+              "typeCode": 2,
+              "children": [
+                {
+                  "guid": "bm_cht_sh___",
+                  "title": "cht.sh",
+                  "typeCode": 1,
+                  "uri": "https://cht.sh",
+                  "tags": "cheatsheet,cli",
+                  "dateAdded": 1726617600000000
+                },
+                {
+                  "guid": "bm_tldr_____",
+                  "title": "tldr pages",
+                  "typeCode": 1,
+                  "uri": "https://tldr.sh",
+                  "tags": "cheatsheet,cli,man",
+                  "dateAdded": 1726704000000000
+                },
+                {
+                  "guid": "bm_ht_cheat_",
+                  "title": "HackTricks",
+                  "typeCode": 1,
+                  "uri": "https://book.hacktricks.xyz",
+                  "tags": "cheatsheet,redteam,exploitation",
+                  "dateAdded": 1728345600000000
+                },
+                {
+                  "guid": "bm_gtfo_ch__",
+                  "title": "GTFOBins",
+                  "typeCode": 1,
+                  "uri": "https://gtfobins.github.io",
+                  "tags": "cheatsheet,privesc,linux",
+                  "dateAdded": 1728432000000000
+                }
+              ]
+            },
+            {
+              "guid": "f_standards_",
+              "title": "Standards & RFCs",
+              "typeCode": 2,
+              "children": [
+                {
+                  "guid": "bm_rfc______",
+                  "title": "RFC Editor",
+                  "typeCode": 1,
+                  "uri": "https://www.rfc-editor.org",
+                  "tags": "rfc,standards,networking",
+                  "dateAdded": 1736726400000000
+                },
+                {
+                  "guid": "bm_owasp____",
+                  "title": "OWASP Top 10",
+                  "typeCode": 1,
+                  "uri": "https://owasp.org/Top10/",
+                  "tags": "owasp,web,security",
+                  "dateAdded": 1736812800000000
+                },
+                {
+                  "guid": "bm_cve______",
+                  "title": "NVD - CVE Search",
+                  "typeCode": 1,
+                  "uri": "https://nvd.nist.gov/vuln/search",
+                  "tags": "cve,vulnerability,nvd",
+                  "dateAdded": 1738368000000000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "guid": "f_tools______",
+          "title": "Tools",
+          "typeCode": 2,
+          "children": [
+            {
+              "guid": "bm_gh_tools_",
+              "title": "GitHub",
+              "typeCode": 1,
+              "uri": "https://github.com",
+              "tags": "git,hosting,code",
+              "dateAdded": 1756771200000000
+            },
+            {
+              "guid": "bm_cyberchef",
+              "title": "CyberChef",
+              "typeCode": 1,
+              "uri": "https://gchq.github.io/CyberChef/",
+              "tags": "encoding,crypto,forensics",
+              "dateAdded": 1763164800000000
+            },
+            {
+              "guid": "bm_regex____",
+              "title": "regex101",
+              "typeCode": 1,
+              "uri": "https://regex101.com",
+              "tags": "regex,dev",
+              "dateAdded": 1763251200000000
+            },
+            {
+              "guid": "bm_explainsh",
+              "title": "ExplainShell",
+              "typeCode": 1,
+              "uri": "https://explainshell.com",
+              "tags": "shell,bash,docs",
+              "dateAdded": 1763337600000000
+            },
+            {
+              "guid": "bm_jwt______",
+              "title": "JWT.io",
+              "typeCode": 1,
+              "uri": "https://jwt.io",
+              "tags": "jwt,auth,web",
+              "dateAdded": 1769558400000000
+            },
+            {
+              "guid": "bm_dnschkr__",
+              "title": "DNSChecker",
+              "typeCode": 1,
+              "uri": "https://dnschecker.org",
+              "tags": "dns,network",
+              "dateAdded": 1769644800000000
+            }
+          ]
+        },
+        {
+          "guid": "f_blogs______",
+          "title": "Blogs & News",
+          "typeCode": 2,
+          "children": [
+            {
+              "guid": "bm_krebs____",
+              "title": "Krebs on Security",
+              "typeCode": 1,
+              "uri": "https://krebsonsecurity.com",
+              "tags": "blog,news,security",
+              "dateAdded": 1770720000000000
+            },
+            {
+              "guid": "bm_schneier_",
+              "title": "Schneier on Security",
+              "typeCode": 1,
+              "uri": "https://www.schneier.com",
+              "tags": "blog,news,security",
+              "dateAdded": 1770806400000000
+            },
+            {
+              "guid": "bm_thehacker",
+              "title": "The Hacker News",
+              "typeCode": 1,
+              "uri": "https://thehackernews.com",
+              "tags": "news,security",
+              "dateAdded": 1770892800000000
+            },
+            {
+              "guid": "bm_darkread_",
+              "title": "Dark Reading",
+              "typeCode": 1,
+              "uri": "https://www.darkreading.com",
+              "tags": "news,security",
+              "dateAdded": 1770979200000000
+            },
+            {
+              "guid": "bm_bleepcomp",
+              "title": "BleepingComputer",
+              "typeCode": 1,
+              "uri": "https://www.bleepingcomputer.com",
+              "tags": "news,security,malware",
+              "dateAdded": 1771065600000000
+            },
+            {
+              "guid": "bm_vt_blog__",
+              "title": "VirusTotal",
+              "typeCode": 1,
+              "uri": "https://www.virustotal.com",
+              "tags": "malware,analysis",
+              "dateAdded": 1772534400000000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "unfiled_____",
+      "title": "Other Bookmarks",
+      "root": "unfiledBookmarksFolder",
+      "typeCode": 2,
+      "children": []
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bmctl - Firefox Bookmark Toolkit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      #0a0a0a;
+      --bg2:     #111;
+      --bg3:     #161616;
+      --border:  #1e1e1e;
+      --border2: #2a2a2a;
+      --amber:   #f5a623;
+      --amber2:  #d4891a;
+      --green:   #4caf79;
+      --red:     #e05c5c;
+      --text:    #e0e0e0;
+      --mid:     #888;
+      --dim:     #444;
+      --mono:    'Space Mono', monospace;
+      --sans:    'Space Grotesk', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10,10,10,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 52px;
+    }
+    .brand { font-family: var(--mono); font-size: .95rem; font-weight: 700; color: var(--amber); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.4rem; align-items: center; }
+    .nav-links a { color: var(--mid); text-decoration: none; font-size: .82rem; font-weight: 500; transition: color .15s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.gh {
+      color: var(--amber); border: 1px solid #3a2e1a;
+      padding: .28rem .85rem; border-radius: 4px; transition: background .15s;
+    }
+    .nav-links a.gh:hover { background: #1f1a0f; }
+
+    /* HERO */
+    .hero {
+      max-width: 980px; margin: 0 auto;
+      padding: 4.5rem 2rem 3rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .hero-left h1 {
+      font-size: 2.4rem; font-weight: 700; letter-spacing: -.03em;
+      line-height: 1.15; margin-bottom: .8rem;
+    }
+    .hero-left h1 em { font-style: normal; color: var(--amber); }
+    .hero-left p { color: var(--mid); font-size: .95rem; line-height: 1.65; margin-bottom: 1.5rem; max-width: 380px; }
+    .hero-meta {
+      display: flex; gap: .5rem; flex-wrap: wrap;
+    }
+    .tag {
+      font-family: var(--mono); font-size: .68rem;
+      background: var(--bg3); border: 1px solid var(--border2);
+      color: var(--mid); padding: .2rem .55rem; border-radius: 3px;
+      letter-spacing: .04em;
+    }
+
+    /* TERMINAL BLOCK */
+    .term {
+      background: #0d0d0d;
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: .72rem;
+      line-height: 1.65;
+    }
+    .term-bar {
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      padding: .4rem .9rem;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.r { background: #e05c5c; }
+    .dot.y { background: #f5a623; }
+    .dot.g { background: #4caf79; }
+    .term-body { padding: .9rem 1rem; color: #bbb; white-space: pre; overflow-x: auto; }
+    .term-body .ps1 { color: var(--amber); }
+    .term-body .sep { color: var(--dim); }
+    .term-body .hi  { color: var(--text); }
+    .term-body .ok  { color: var(--green); }
+    .term-body .warn { color: #e8a020; }
+    .term-body .url { color: #7ab8f5; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0 2rem; }
+
+    /* COMMANDS */
+    .section { max-width: 980px; margin: 0 auto; padding: 3.5rem 2rem; }
+    .section-head { margin-bottom: 2rem; }
+    .section-head h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -.02em; }
+    .section-head p  { color: var(--mid); font-size: .88rem; margin-top: .3rem; }
+
+    .cmd-list { display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .cmd-block { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: start; }
+    .cmd-info {}
+    .cmd-info .cmd-name {
+      font-family: var(--mono); font-size: .92rem; font-weight: 700;
+      color: var(--amber); margin-bottom: .3rem;
+    }
+    .cmd-info .cmd-desc { color: var(--mid); font-size: .84rem; line-height: 1.55; }
+    .cmd-info .cmd-flags { margin-top: .8rem; display: grid; grid-template-columns: auto 1fr; gap: .1rem .8rem; }
+    .cmd-info .flag-k { font-family: var(--mono); font-size: .68rem; color: var(--amber2); white-space: nowrap; }
+    .cmd-info .flag-v { font-family: var(--mono); font-size: .68rem; color: var(--dim); }
+
+    /* INLINE CODE */
+    code {
+      font-family: var(--mono); font-size: .78rem;
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: .1rem .35rem; border-radius: 3px; color: #ccc;
+    }
+
+    /* GET IT */
+    .get-it {
+      max-width: 980px; margin: 0 auto; padding: 3.5rem 2rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .get-it h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .5rem; }
+    .get-it p  { color: var(--mid); font-size: .88rem; line-height: 1.6; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--dim); font-size: .75rem; flex-wrap: wrap; gap: .5rem;
+    }
+    footer a { color: var(--dim); text-decoration: none; }
+    footer a:hover { color: var(--amber); }
+
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1rem 2rem; }
+      .cmd-block { grid-template-columns: 1fr; gap: 1rem; }
+      .get-it { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1rem; }
+      .section { padding: 2.5rem 1rem; }
+      nav { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#">bmctl</a>
+  <div class="nav-links">
+    <a href="#commands">Commands</a>
+    <a href="/bmctl/demo/" target="_blank" rel="noopener noreferrer">Demo</a>
+    <a href="https://github.com/franckferman/bmctl" target="_blank" rel="noopener noreferrer" class="gh">GitHub</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <h1>Your Firefox bookmarks,<br><em>under control</em></h1>
+    <p>Single-file Python CLI. Audit duplicates, diff exports, merge collections, generate a self-hosted dashboard. No install, no server.</p>
+    <div class="hero-meta">
+      <span class="tag">Python 3</span>
+      <span class="tag">single file</span>
+      <span class="tag">Firefox JSON</span>
+      <span class="tag">no server</span>
+    </div>
+  </div>
+
+  <div class="term">
+    <div class="term-bar">
+      <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    </div>
+    <div class="term-body"><span class="ps1">$</span> python bmctl.py audit -i bookmarks.json
+
+<span class="sep">======================================================================</span>
+<span class="hi">                  GLOBAL AUDIT REPORT</span>
+<span class="sep">======================================================================</span>
+ Total bookmarks found        : <span class="hi">3110</span>
+ Folders scanned              : <span class="hi">244</span>
+ Unique links                 : <span class="ok">3059</span>
+ Duplicates detected          : <span class="warn">51 (1.6%)</span>
+<span class="sep">======================================================================</span>
+
+<span class="warn">[!]</span> Top 10 most duplicated links:
+  - <span class="hi">GitHub</span>
+    URL : <span class="url">https://github.com</span>
+    Found <span class="warn">3 times</span>:
+      * Folder: Dev
+      * Folder: CTI, OSINT &amp; SocMint &gt; Code Search</div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- COMMANDS -->
+<div class="section" id="commands">
+  <div class="section-head">
+    <h2>Five commands</h2>
+    <p>Full lifecycle of a Firefox bookmark collection from the command line.</p>
+  </div>
+
+  <div class="cmd-list">
+
+    <div class="cmd-block">
+      <div class="cmd-info">
+        <div class="cmd-name">audit</div>
+        <div class="cmd-desc">Inspect a single export. Duplicate detection, global stats, folder tree with counts.</div>
+        <div class="cmd-flags">
+          <span class="flag-k">-i / --input</span><span class="flag-v">Firefox JSON (required)</span>
+          <span class="flag-k">--top N</span><span class="flag-v">Top N duplicated URLs</span>
+          <span class="flag-k">--show-short</span><span class="flag-v">Stats only</span>
+          <span class="flag-k">--show-tree</span><span class="flag-v">Full folder hierarchy</span>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-body"><span class="ps1">$</span> python bmctl.py audit -i bookmarks.json --top 3
+
+<span class="warn">[!]</span> Top 3 most duplicated links:
+
+  - <span class="hi">GitHub</span>
+    URL : <span class="url">https://github.com</span>
+    Found <span class="warn">3 times</span>:
+      * Folder: Dev &gt; Python
+      * Folder: Tools
+
+  - <span class="hi">HackTricks</span>
+    URL : <span class="url">https://book.hacktricks.xyz</span>
+    Found <span class="warn">2 times</span>:
+      * Folder: Cybersecurity &amp; CTI &gt; Exploitation
+      * Folder: Documentation &amp; References &gt; Cheatsheets</div>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-info">
+        <div class="cmd-name">compare</div>
+        <div class="cmd-desc">Diff two exports. What was added, what was removed, net delta between collections.</div>
+        <div class="cmd-flags">
+          <span class="flag-k">-o / --old</span><span class="flag-v">Old JSON export</span>
+          <span class="flag-k">-n / --new</span><span class="flag-v">New JSON export</span>
+          <span class="flag-k">--show-full</span><span class="flag-v">Full added/removed lists</span>
+          <span class="flag-k">--show-short</span><span class="flag-v">Stats only</span>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-body"><span class="ps1">$</span> python bmctl.py compare -o old.json -n new.json
+
+<span class="sep">==========================================</span>
+<span class="hi">           COMPARISON REPORT</span>
+<span class="sep">==========================================</span>
+ Unique bookmarks V1 (old)  : <span class="hi">2980</span>
+ Unique bookmarks V2 (new)  : <span class="hi">3059</span>
+ Net delta                  : <span class="ok">+79</span>
+<span class="sep">==========================================</span>
+<span class="ok"> [+] New bookmarks added      : 102</span>
+<span class="red"> [-] Old bookmarks removed    : 23</span>
+
+<span class="ok">[+]</span> PREVIEW OF NEW ENTRIES:
+  + <span class="hi">HackTricks</span>
+    <span class="url">https://book.hacktricks.xyz</span></div>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-info">
+        <div class="cmd-name">merge</div>
+        <div class="cmd-desc">Takes the union of two collections. Same URL, same folder: keeps most recent, merges tags. Same URL, different folders: prompts which folder to keep (or <code>--no-confirm</code> to auto-resolve). No entry is silently deleted. Output is a Netscape HTML file importable by any browser.</div>
+        <div class="cmd-flags">
+          <span class="flag-k">-b / --base</span><span class="flag-v">Base JSON</span>
+          <span class="flag-k">-n / --new</span><span class="flag-v">JSON to merge in</span>
+          <span class="flag-k">-o / --output</span><span class="flag-v">Output HTML</span>
+          <span class="flag-k">--no-confirm</span><span class="flag-v">Auto-resolve conflicts</span>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-body"><span class="ps1">$</span> python bmctl.py merge -b base.json -n new.json -o merged.html
+
+<span class="warn">[?] FOLDER CONFLICT DETECTED FOR:</span>
+    URL : https://example.com
+    In which folder(s) do you want to keep it?
+      1) [Keep] -> Dev &gt; Tools
+      2) [Keep] -> Misc.
+      3) Skip / Keep most recent version
+    Your choice :</div>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-info">
+        <div class="cmd-name">export</div>
+        <div class="cmd-desc">Export to CSV, Excel or Markdown. All formats include title, URL, folder path, tags, date added.</div>
+        <div class="cmd-flags">
+          <span class="flag-k">-i / --input</span><span class="flag-v">Firefox JSON</span>
+          <span class="flag-k">--format</span><span class="flag-v">csv / xlsx / md</span>
+          <span class="flag-k">-o / --output</span><span class="flag-v">Output file</span>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-body"><span class="ps1">$</span> python bmctl.py export -i bookmarks.json \
+         --format csv -o bookmarks.csv
+
+<span class="ps1">$</span> python bmctl.py export -i bookmarks.json \
+         --format md  -o bookmarks.md</div>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-info">
+        <div class="cmd-name">dashboard</div>
+        <div class="cmd-desc">Self-contained single-file HTML dashboard. Collapsible folder tree, three views (grid / cards / table), global search, recent additions. Open directly in a browser, no server needed.</div>
+        <div class="cmd-flags">
+          <span class="flag-k">-i / --input</span><span class="flag-v">Firefox JSON</span>
+          <span class="flag-k">-o / --output</span><span class="flag-v">Output HTML (default: dashboard.html)</span>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <div class="term-body"><span class="ps1">$</span> python bmctl.py dashboard -i bookmarks.json \
+         -o dashboard.html
+
+<span class="ok">[*]</span> Loading bookmarks for dashboard...
+<span class="ok">[*]</span> Generating bmctl dashboard: dashboard.html
+<span class="ok">[*]</span> bmctl dashboard successfully generated: dashboard.html</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- GET IT -->
+<div class="get-it">
+  <div>
+    <h2>Get it</h2>
+    <p>No package manager needed. Clone the repo, run the script. <code>pandas</code> and <code>openpyxl</code> are optional, only required for Excel export.</p>
+  </div>
+  <div class="term">
+    <div class="term-bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <div class="term-body"><span class="ps1">$</span> git clone https://github.com/franckferman/bmctl.git
+<span class="ps1">$</span> cd bmctl
+
+<span class="dim"># Optional — Excel export only</span>
+<span class="ps1">$</span> pip install -r requirements.txt
+
+<span class="dim"># Export your bookmarks first:</span>
+<span class="dim"># Bookmarks &gt; Show All &gt; Import and Backup &gt; Backup...</span>
+
+<span class="ps1">$</span> python bmctl.py audit -i bookmarks.json</div>
+  </div>
+</div>
+
+<footer>
+  <span>bmctl &mdash; Firefox Bookmark Toolkit</span>
+  <span>
+    <a href="https://github.com/franckferman" target="_blank" rel="noopener noreferrer">Franck Ferman</a>
+    &nbsp;&mdash;&nbsp;
+    <a href="https://github.com/franckferman/bmctl/blob/stable/LICENSE" target="_blank" rel="noopener noreferrer">License</a>
+  </span>
+</footer>
+
+</body>
+</html>

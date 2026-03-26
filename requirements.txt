@@ -1,0 +1,3 @@
+# Optional - required only for `export --format xlsx`
+pandas
+openpyxl
